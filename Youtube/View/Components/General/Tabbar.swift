@@ -22,7 +22,7 @@ struct Tabbar: View {
             
             Spacer()
             
-            SysImageButton(buttonImageName: "play.tv", buttonLabel: "subscription")
+            SysImageButton(buttonImageName: "rectangle.stack", buttonLabel: "subscription")
             
             Spacer()
             

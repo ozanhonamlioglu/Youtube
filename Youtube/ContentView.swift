@@ -13,6 +13,8 @@ struct ContentView: View {
             VStack {
                 Header()
                 Spacer()
+                Home()
+                Spacer()
                 Tabbar()
             }
         }
