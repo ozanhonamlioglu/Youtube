@@ -22,10 +22,10 @@ struct Header: View {
             Spacer()
             
             HStack(spacing: 15) {
-                SysImageButton(buttonImageName: "laptopcomputer.and.iphone")
-                SysImageButton(buttonImageName: "bell")
-                SysImageButton(buttonImageName: "magnifyingglass")
-                SysImageButton(buttonImageName: "person.crop.circle")
+                SysImageButton(callback: nil, buttonImageName: "laptopcomputer.and.iphone")
+                SysImageButton(callback: nil, buttonImageName: "bell")
+                SysImageButton(callback: nil, buttonImageName: "magnifyingglass")
+                SysImageButton(callback: nil, buttonImageName: "person.crop.circle")
             }
         }
         .padding(.horizontal)

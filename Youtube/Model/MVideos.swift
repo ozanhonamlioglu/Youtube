@@ -69,5 +69,5 @@ struct MVideosItemsSnippetThumbNailValue: Decodable, Hashable {
     var height: Int
 }
 
-public var YoutubeAPIKey = "AIzaSyAgEuOh0WVwF7ub36qAqiDhV4BivUWkFY0"
+public var YoutubeAPIKey = "AIzaSyDUfYc0PuEgZMrZAg-mn9cZR46xEz7q5WA"
 public var YoutubeVideosList = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2C%20status%2C%20statistics%2C%20topicDetails%2C%20contentDetails%2C%20player%2C%20id&chart=mostPopular&maxResults=20&key=" + YoutubeAPIKey

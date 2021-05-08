@@ -13,7 +13,10 @@ enum FontTypes: String {
 }
 
 struct SysImageButton: View {
+    var callback: (() -> Void)?
     var buttonImageName: String
+    var activeButtonImageName: String?
+    var active: Bool?
     var buttonLabel: String?
     var iconAndTextFontStyle: [FontTypes?: Font]?
     
@@ -41,12 +44,25 @@ struct SysImageButton: View {
         return .caption2
     }
     
+    var imageString: String {
+        if(active != nil && active != false) {
+            if(activeButtonImageName != nil) {
+                return activeButtonImageName!
+            } else {
+                return buttonImageName
+            }
+        }
+        
+        return buttonImageName
+    }
+    
     var body: some View {
         Button(action: {
-            //
+            callback != nil ? (callback!)() : nil
+            
         }, label: {
             VStack {
-                Image(systemName: buttonImageName)
+                Image(systemName: imageString)
                     .font(buttonStyle)
                 if(buttonLabel != nil) {
                     Text(buttonLabel!)
@@ -62,7 +78,7 @@ struct SysImageButton_Previews: PreviewProvider {
         ZStack {
             Color.init(UIColor(named: "background")!).edgesIgnoringSafeArea(.all)
             
-            SysImageButton(buttonImageName: "house.fill", buttonLabel: "Home")
+            SysImageButton(callback: nil, buttonImageName: "house", activeButtonImageName: "house.fill", active: true, buttonLabel: "Home")
         }
         .preferredColorScheme(.dark)
     }

@@ -8,30 +8,33 @@
 import SwiftUI
 
 struct Home: View {
-    @ObservedObject var homeList: VMHomeFeed = VMHomeFeed()
+    @ObservedObject var vm: VMHomeFeed = VMHomeFeed()
     @State var loading: Bool = true
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             
             if (loading) {
-                ProgressView().progressViewStyle(CircularProgressViewStyle())
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
             }
             
-            LazyVStack {
+            VStack {
                 if(!loading) {
-                    ForEach(homeList.list!.items, id: \.self) { item in
+                    ForEach(vm.list!.items, id: \.self) { item in
                         LargeVideoPreview(
-                            url: homeList.getImageUrl(thumbnails: item.snippet.thumbnails),
+                            url: vm.getImageUrl(thumbnails: item.snippet.thumbnails),
                             title: item.snippet.title,
                             channelName: item.snippet.channelTitle,
-                            viewCount: item.statistics.viewCount
+                            viewCount: item.statistics.viewCount,
+                            publishedAt: item.snippet.publishedAt
                         )
                     }
                 }
             }
             
-        }.onReceive(homeList.$list, perform: { list in
+        }.onReceive(vm.$list, perform: { list in
             if(list != nil) {
                 loading = false
             }

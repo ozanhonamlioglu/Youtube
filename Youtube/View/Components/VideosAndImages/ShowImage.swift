@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ShowImage: View {
-    @ObservedObject var imageLoader: ImageLoader
+    @ObservedObject var imageLoader: VMImageLoader
     @Binding var loading: Bool?
     
     init(withURL url:String, loading: Binding<Bool?>) {
-        imageLoader = ImageLoader(urlString:url)
+        imageLoader = VMImageLoader(urlString:url)
         self._loading = loading
     }
 

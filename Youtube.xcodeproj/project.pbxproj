@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7CA637A2D7088D3820CC4E85 /* Pods_Youtube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4AFAA034BFABA63623473AF /* Pods_Youtube.framework */; };
+		BD3F24B42646CD3700D1EBA9 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3F24B32646CD3700D1EBA9 /* RoundedCorners.swift */; };
+		BD3F24B82646EEC300D1EBA9 /* VMStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3F24B72646EEC300D1EBA9 /* VMStore.swift */; };
+		BD3F24BB2647294500D1EBA9 /* AddModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3F24BA2647294500D1EBA9 /* AddModal.swift */; };
 		BDB43A5E2641D2AD0038BAE5 /* YoutubeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB43A5D2641D2AD0038BAE5 /* YoutubeApp.swift */; };
 		BDB43A602641D2AD0038BAE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB43A5F2641D2AD0038BAE5 /* ContentView.swift */; };
 		BDB43A622641D2AE0038BAE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDB43A612641D2AE0038BAE5 /* Assets.xcassets */; };
@@ -29,6 +32,9 @@
 		18DC8AC63F99FFD5F16317C9 /* Pods-Youtube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Youtube.release.xcconfig"; path = "Target Support Files/Pods-Youtube/Pods-Youtube.release.xcconfig"; sourceTree = "<group>"; };
 		4B5A6317BDCE0C79F7B50527 /* Pods-Youtube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Youtube.debug.xcconfig"; path = "Target Support Files/Pods-Youtube/Pods-Youtube.debug.xcconfig"; sourceTree = "<group>"; };
 		B4AFAA034BFABA63623473AF /* Pods_Youtube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Youtube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD3F24B32646CD3700D1EBA9 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
+		BD3F24B72646EEC300D1EBA9 /* VMStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMStore.swift; sourceTree = "<group>"; };
+		BD3F24BA2647294500D1EBA9 /* AddModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModal.swift; sourceTree = "<group>"; };
 		BDB43A5A2641D2AD0038BAE5 /* Youtube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Youtube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDB43A5D2641D2AD0038BAE5 /* YoutubeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeApp.swift; sourceTree = "<group>"; };
 		BDB43A5F2641D2AD0038BAE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +81,40 @@
 				B4AFAA034BFABA63623473AF /* Pods_Youtube.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD3F24AE2646CA1700D1EBA9 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				BDB43A8C2641E03D0038BAE5 /* Header.swift */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		BD3F24AF2646CA2000D1EBA9 /* Footers */ = {
+			isa = PBXGroup;
+			children = (
+				BDB43A7B2641D4CA0038BAE5 /* Tabbar.swift */,
+				BD3F24BA2647294500D1EBA9 /* AddModal.swift */,
+			);
+			path = Footers;
+			sourceTree = "<group>";
+		};
+		BD3F24B02646CA2F00D1EBA9 /* VideosAndImages */ = {
+			isa = PBXGroup;
+			children = (
+				BDB43AA4264207DA0038BAE5 /* LargeVideoPreview.swift */,
+				BDB43ABE26420F3E0038BAE5 /* ShowImage.swift */,
+			);
+			path = VideosAndImages;
+			sourceTree = "<group>";
+		};
+		BD3F24B22646CD2300D1EBA9 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				BD3F24B32646CD3700D1EBA9 /* RoundedCorners.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		BDB43A512641D2AD0038BAE5 = {
@@ -132,6 +172,7 @@
 			children = (
 				BDB43A982642025F0038BAE5 /* VMHomeFeed.swift */,
 				BDB43AB626420DFA0038BAE5 /* VMImageLoader.swift */,
+				BD3F24B72646EEC300D1EBA9 /* VMStore.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -157,7 +198,10 @@
 		BDB43A782641D3380038BAE5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				BDB43A892641DEC50038BAE5 /* General */,
+				BD3F24B22646CD2300D1EBA9 /* General */,
+				BD3F24B02646CA2F00D1EBA9 /* VideosAndImages */,
+				BD3F24AF2646CA2000D1EBA9 /* Footers */,
+				BD3F24AE2646CA1700D1EBA9 /* Headers */,
 				BDB43A7F2641D6D30038BAE5 /* Buttons */,
 			);
 			path = Components;
@@ -169,17 +213,6 @@
 				BDB43A802641D6ED0038BAE5 /* SysImageButton.swift */,
 			);
 			path = Buttons;
-			sourceTree = "<group>";
-		};
-		BDB43A892641DEC50038BAE5 /* General */ = {
-			isa = PBXGroup;
-			children = (
-				BDB43A7B2641D4CA0038BAE5 /* Tabbar.swift */,
-				BDB43A8C2641E03D0038BAE5 /* Header.swift */,
-				BDB43AA4264207DA0038BAE5 /* LargeVideoPreview.swift */,
-				BDB43ABE26420F3E0038BAE5 /* ShowImage.swift */,
-			);
-			path = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +342,9 @@
 				BDB43A5E2641D2AD0038BAE5 /* YoutubeApp.swift in Sources */,
 				BDB43AA5264207DA0038BAE5 /* LargeVideoPreview.swift in Sources */,
 				BDB43A7C2641D4CA0038BAE5 /* Tabbar.swift in Sources */,
+				BD3F24B42646CD3700D1EBA9 /* RoundedCorners.swift in Sources */,
+				BD3F24BB2647294500D1EBA9 /* AddModal.swift in Sources */,
+				BD3F24B82646EEC300D1EBA9 /* VMStore.swift in Sources */,
 				BDB43A942641FE600038BAE5 /* MVideos.swift in Sources */,
 				BDB43ABF26420F3E0038BAE5 /* ShowImage.swift in Sources */,
 				BDB43A852641DE440038BAE5 /* ErrorPage.swift in Sources */,
@@ -369,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -424,7 +460,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

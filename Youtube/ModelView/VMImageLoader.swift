@@ -9,16 +9,14 @@ import Foundation
 import Combine
 import SwiftUI
 
-class ImageLoader: ObservableObject {
+class VMImageLoader: ObservableObject {
     var imageCache = ImageCache.getImageCache()
     // var didChange = PassthroughSubject<Data, Never>()
     @Published var image: UIImage?
 
     init(urlString: String) {
         if let img = imageCache.get(forKey: urlString) {
-            DispatchQueue.main.async {
-                self.image = img
-            }
+            self.image = img
         } else {
             getImageFromResponse(urlString: urlString)
         }

@@ -14,8 +14,10 @@ struct LargeVideoPreview: View {
     var title: String
     var channelName: String
     var viewCount: String
+    var publishedAt: String
         
     let width = UIScreen.main.bounds.width
+
     
     var body: some View {
         VStack {
@@ -24,6 +26,7 @@ struct LargeVideoPreview: View {
                     ShowImage(withURL: url, loading: $loading)
                         .frame(width: width, alignment: .center)
                         .clipped()
+                        .border(Color.gray, width: 0.5)
                     
                     Timer()
                 }
@@ -34,12 +37,12 @@ struct LargeVideoPreview: View {
             }.frame(height: loading! ? 100 : .none)
             
             HStack(alignment: .top) {
-                SysImageButton(buttonImageName: "person.crop.circle")
+                SysImageButton(callback: nil, buttonImageName: "person.crop.circle")
 
                 VStack(alignment: .leading) {
                     Text(title)
                         .font(.subheadline)
-                    Text("\(channelName) • \(viewCount) görüntüleme • 2 ay önce")
+                    Text("\(channelName) • \(VMHomeFeed.getModifiedViewCountString(views: viewCount)) views • \(VMHomeFeed.relativeDate(publishedAt: publishedAt))")
                         .font(.caption)
                         .foregroundColor(.gray)
                 }
@@ -54,7 +57,7 @@ struct LargeVideoPreview_Previews: PreviewProvider {
         ZStack {
             Color.init(UIColor(named: "background")!).edgesIgnoringSafeArea(.all)
             
-            LargeVideoPreview(url: "https://i.ytimg.com/vi/L3A8kdCk_fM/maxresdefault.jpg", title: "Test Title", channelName: "Marvel Studio", viewCount: "1000")
+            LargeVideoPreview(url: "https://i.ytimg.com/vi/L3A8kdCk_fM/maxresdefault.jpg", title: "Test Title", channelName: "Marvel Studio", viewCount: "1000", publishedAt: "2021-05-04T12:03:16Z")
         }
         .preferredColorScheme(.dark)
     }
