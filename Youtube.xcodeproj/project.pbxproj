@@ -11,6 +11,8 @@
 		BD3F24B42646CD3700D1EBA9 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3F24B32646CD3700D1EBA9 /* RoundedCorners.swift */; };
 		BD3F24B82646EEC300D1EBA9 /* VMStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3F24B72646EEC300D1EBA9 /* VMStore.swift */; };
 		BD3F24BB2647294500D1EBA9 /* AddModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3F24BA2647294500D1EBA9 /* AddModal.swift */; };
+		BD79471F2647FC6A00F77949 /* ButtonModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD79471E2647FC6A00F77949 /* ButtonModifiers.swift */; };
+		BD79472226484D3100F77949 /* AnimationModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD79472126484D3100F77949 /* AnimationModifiers.swift */; };
 		BDB43A5E2641D2AD0038BAE5 /* YoutubeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB43A5D2641D2AD0038BAE5 /* YoutubeApp.swift */; };
 		BDB43A602641D2AD0038BAE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB43A5F2641D2AD0038BAE5 /* ContentView.swift */; };
 		BDB43A622641D2AE0038BAE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDB43A612641D2AE0038BAE5 /* Assets.xcassets */; };
@@ -35,6 +37,8 @@
 		BD3F24B32646CD3700D1EBA9 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		BD3F24B72646EEC300D1EBA9 /* VMStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMStore.swift; sourceTree = "<group>"; };
 		BD3F24BA2647294500D1EBA9 /* AddModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModal.swift; sourceTree = "<group>"; };
+		BD79471E2647FC6A00F77949 /* ButtonModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifiers.swift; sourceTree = "<group>"; };
+		BD79472126484D3100F77949 /* AnimationModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationModifiers.swift; sourceTree = "<group>"; };
 		BDB43A5A2641D2AD0038BAE5 /* Youtube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Youtube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDB43A5D2641D2AD0038BAE5 /* YoutubeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeApp.swift; sourceTree = "<group>"; };
 		BDB43A5F2641D2AD0038BAE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,6 +121,15 @@
 			path = General;
 			sourceTree = "<group>";
 		};
+		BD79471D2647FC2F00F77949 /* CustomModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				BD79471E2647FC6A00F77949 /* ButtonModifiers.swift */,
+				BD79472126484D3100F77949 /* AnimationModifiers.swift */,
+			);
+			path = CustomModifiers;
+			sourceTree = "<group>";
+		};
 		BDB43A512641D2AD0038BAE5 = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +193,7 @@
 		BDB43A6F2641D2D20038BAE5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BD79471D2647FC2F00F77949 /* CustomModifiers */,
 				BDB43A782641D3380038BAE5 /* Components */,
 				BDB43A772641D32E0038BAE5 /* Pages */,
 			);
@@ -343,10 +357,12 @@
 				BDB43AA5264207DA0038BAE5 /* LargeVideoPreview.swift in Sources */,
 				BDB43A7C2641D4CA0038BAE5 /* Tabbar.swift in Sources */,
 				BD3F24B42646CD3700D1EBA9 /* RoundedCorners.swift in Sources */,
+				BD79472226484D3100F77949 /* AnimationModifiers.swift in Sources */,
 				BD3F24BB2647294500D1EBA9 /* AddModal.swift in Sources */,
 				BD3F24B82646EEC300D1EBA9 /* VMStore.swift in Sources */,
 				BDB43A942641FE600038BAE5 /* MVideos.swift in Sources */,
 				BDB43ABF26420F3E0038BAE5 /* ShowImage.swift in Sources */,
+				BD79471F2647FC6A00F77949 /* ButtonModifiers.swift in Sources */,
 				BDB43A852641DE440038BAE5 /* ErrorPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

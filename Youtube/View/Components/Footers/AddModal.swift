@@ -11,23 +11,31 @@ enum DragDirection: String {
     case top, bottom, none
 }
 
+enum AnimationPositionStatus: String {
+    case open, closed, waiting
+}
+
 struct AddModal: View {
     @State var modalPosition: CGFloat = UIScreen.main.bounds.height + (UIScreen.main.bounds.height / 2)
     @State var bgOpacity: Double = 0.0
-    @Binding var open: Bool
+    @Binding var open: Bool {
+        didSet {
+            animPositionStatus = .open
+        }
+    }
     
     @State var dragStarted: Bool = false
     @State var direction: DragDirection = .bottom
     @State var startPosition: CGFloat = 0
+    @State var animPositionStatus: AnimationPositionStatus = .closed
+    var animationDuration = 0.2
     
     func closeModal() {
-        modalPosition = UIScreen.main.bounds.height + (UIScreen.main.bounds.height / 2)
-        bgOpacity = 0.0
-        direction = .none
-        
-        // animation finish
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            open = false
+        withAnimation(.easeIn(duration: animationDuration)) {
+            modalPosition = UIScreen.main.bounds.height + (UIScreen.main.bounds.height / 2)
+            bgOpacity = 0.0
+            direction = .none
+            animPositionStatus = .waiting
         }
     }
     
@@ -53,9 +61,7 @@ struct AddModal: View {
             }
             .onEnded { val in
                 dragStarted = false
-                if direction == .top {
-                    modalPosition = UIScreen.main.bounds.height + (UIScreen.main.bounds.height / 2) - 200
-                } else if direction == .bottom {
+                withAnimation(.easeIn(duration: 0.1)) {
                     modalPosition = UIScreen.main.bounds.height + (UIScreen.main.bounds.height / 2) - 200
                 }
             }
@@ -68,7 +74,7 @@ struct AddModal: View {
                 .onTapGesture(count: 1, perform: {
                     closeModal()
                 })
-                .animation(.linear(duration: 0.2))
+                .animation(.linear(duration: animationDuration))
             
 
             VStack {
@@ -90,27 +96,15 @@ struct AddModal: View {
                 VStack(spacing: 20) {
                     Button(action: {}, label: {
                         HStack() {
-                            ZStack {
-                                Circle()
-                                    .frame(width: 35, height: 35, alignment: .center)
-                                    .foregroundColor(.gray)
-                                
-                                Image(systemName: "square.and.arrow.up")
-                            }
-                            
+                            Image(systemName: "square.and.arrow.up")
+                                .surroundWithCircle(circleSize: 35)
                             Text("Upload Video")
                         }.frame(width: UIScreen.main.bounds.width - 30, alignment: .leading)
                     })
                     Button(action: {}, label: {
                         HStack {
-                            ZStack {
-                                Circle()
-                                    .frame(width: 35, height: 35, alignment: .center)
-                                    .foregroundColor(.gray)
-                                
-                                Image(systemName: "dot.radiowaves.left.and.right")
-                            }
-                            
+                            Image(systemName: "dot.radiowaves.left.and.right")
+                                .surroundWithCircle(circleSize: 35)
                             Text("Start Streaming")
                         }.frame(width: UIScreen.main.bounds.width - 30, alignment: .leading)
                     })
@@ -121,16 +115,23 @@ struct AddModal: View {
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             .background(RoundedCorners(color: Color("addModal"), tl: 15, tr: 15, bl: 0, br: 0))
             .position(CGPoint( x: UIScreen.main.bounds.width / 2, y: modalPosition ))
-            .animation(dragStarted ? .none : .linear(duration: 0.2))
             .foregroundColor(.white)
             .gesture(drag)
-            // .animation(.interpolatingSpring(mass: 0.1, stiffness: 2, damping: 0.7, initialVelocity: 3))
+            .onAnimationCompleted(for: modalPosition) {
+                // run here only for close the animation
+                if animPositionStatus == .waiting {
+                    animPositionStatus = .closed
+                    open = false
+                }
+            }
 
         }
         .edgesIgnoringSafeArea(.all)
         .onAppear(perform: {
-            modalPosition = UIScreen.main.bounds.height + (UIScreen.main.bounds.height / 2) - 200
-            bgOpacity = 0.5
+            withAnimation(.easeIn(duration: animationDuration)) {
+                modalPosition = UIScreen.main.bounds.height + (UIScreen.main.bounds.height / 2) - 200
+                bgOpacity = 0.5
+            }
         })
 
     }
