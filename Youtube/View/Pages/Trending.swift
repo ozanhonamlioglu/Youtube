@@ -1,14 +1,14 @@
 //
-//  Home.swift
+//  Trending.swift
 //  Youtube
 //
-//  Created by ozan honamlioglu on 4.05.2021.
+//  Created by ozan honamlioglu on 10.05.2021.
 //
 
 import SwiftUI
 
-struct Home: View {
-    @ObservedObject var vm: VMTabBarListFeed = VMTabBarListFeed(feed: .home, dataStore: homeDataStore)
+struct Trending: View {
+    @ObservedObject var vm: VMTabBarListFeed = VMTabBarListFeed(feed: .trending, dataStore: trendingDataStore)
     @State var loading: Bool = true
     
     var body: some View {
@@ -40,12 +40,12 @@ struct Home: View {
     }
 }
 
-struct Home_Previews: PreviewProvider {
+struct Trending_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color.init(UIColor(named: "background")!).edgesIgnoringSafeArea(.all)
+            Color("background").edgesIgnoringSafeArea(.all)
             
-            Home()
+            Trending()
         }
         .preferredColorScheme(.dark)
     }

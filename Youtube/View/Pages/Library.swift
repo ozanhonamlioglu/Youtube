@@ -1,14 +1,14 @@
 //
-//  Home.swift
+//  Library.swift
 //  Youtube
 //
-//  Created by ozan honamlioglu on 4.05.2021.
+//  Created by ozan honamlioglu on 11.05.2021.
 //
 
 import SwiftUI
 
-struct Home: View {
-    @ObservedObject var vm: VMTabBarListFeed = VMTabBarListFeed(feed: .home, dataStore: homeDataStore)
+struct Library: View {
+    @ObservedObject var vm: VMTabBarListFeed = VMTabBarListFeed(feed: .library, dataStore: libraryDataStore)
     @State var loading: Bool = true
     
     var body: some View {
@@ -40,13 +40,8 @@ struct Home: View {
     }
 }
 
-struct Home_Previews: PreviewProvider {
+struct Library_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
-            Color.init(UIColor(named: "background")!).edgesIgnoringSafeArea(.all)
-            
-            Home()
-        }
-        .preferredColorScheme(.dark)
+        Library()
     }
 }

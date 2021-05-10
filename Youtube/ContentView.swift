@@ -11,6 +11,10 @@ struct ContentView: View {
     @State var activeTab: TabButtons = .home
     @State var openAddModal = false
     
+    init() {
+        UINavigationBar.appearance().backgroundColor = .red
+    }
+    
     var body: some View {
         ZStack {
             VStack {
@@ -21,11 +25,11 @@ struct ContentView: View {
                 case .home:
                     Home()
                 case .trending:
-                    ZStack {}
+                    Trending()
                 case .subs:
-                    ZStack {}
+                    Subscription()
                 case .lib:
-                    ZStack {}
+                    Library()
                 default:
                     ZStack {}
                 }
@@ -49,6 +53,6 @@ struct ContentView_Previews: PreviewProvider {
             
             ContentView()
         }
-        .preferredColorScheme(.light)
+        .preferredColorScheme(.dark)
     }
 }

@@ -13,7 +13,7 @@ struct LargeVideoPreview: View {
     var url: String
     var title: String
     var channelName: String
-    var viewCount: String
+    var viewCount: String?
     var publishedAt: String
         
     let width = UIScreen.main.bounds.width
@@ -42,7 +42,7 @@ struct LargeVideoPreview: View {
                 VStack(alignment: .leading) {
                     Text(title)
                         .font(.subheadline)
-                    Text("\(channelName) • \(VMHomeFeed.getModifiedViewCountString(views: viewCount)) views • \(VMHomeFeed.relativeDate(publishedAt: publishedAt))")
+                    Text("\(channelName) • \(VMTabBarListFeed.getModifiedViewCountString(views: viewCount)) views • \(VMTabBarListFeed.relativeDate(publishedAt: publishedAt))")
                         .font(.caption)
                         .foregroundColor(.gray)
                 }
