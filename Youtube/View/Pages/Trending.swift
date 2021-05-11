@@ -43,7 +43,7 @@ struct Trending: View {
 struct Trending_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color("background").edgesIgnoringSafeArea(.all)
+            Color("primary").edgesIgnoringSafeArea(.all)
             
             Trending()
         }

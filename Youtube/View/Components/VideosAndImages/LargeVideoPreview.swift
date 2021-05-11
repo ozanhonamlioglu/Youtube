@@ -26,7 +26,6 @@ struct LargeVideoPreview: View {
                     ShowImage(withURL: url, loading: $loading)
                         .frame(width: width, alignment: .center)
                         .clipped()
-                        .border(Color.gray, width: 0.5)
                     
                     Timer()
                 }

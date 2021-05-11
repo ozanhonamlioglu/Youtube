@@ -10,15 +10,18 @@ import SwiftUI
 struct ContentView: View {
     @State var activeTab: TabButtons = .home
     @State var openAddModal = false
+    @State var showSearch = false
     
     init() {
-        UINavigationBar.appearance().backgroundColor = .red
+        // UINavigationBar.appearance().backgroundColor = .red
     }
     
     var body: some View {
         ZStack {
+            Color("primary").edgesIgnoringSafeArea(.all)
+            
             VStack {
-                Header()
+                Header(showSearch: $showSearch)
                 Spacer()
                 
                 switch activeTab {
@@ -31,17 +34,20 @@ struct ContentView: View {
                 case .lib:
                     Library()
                 default:
-                    ZStack {}
+                    EmptyView()
                 }
                 
                 Spacer()
                 Tabbar(activeTab: $activeTab, openAddModal: $openAddModal)
             }
             
-            if(openAddModal) {
+            if openAddModal {
                 AddModal(open: $openAddModal)
             }
             
+            if showSearch {
+                SearchView(showSearch: $showSearch)
+            }
         }
     }
 }
@@ -49,7 +55,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color.init(UIColor(named: "background")!).edgesIgnoringSafeArea(.all)
+            Color("primary").edgesIgnoringSafeArea(.all)
             
             ContentView()
         }

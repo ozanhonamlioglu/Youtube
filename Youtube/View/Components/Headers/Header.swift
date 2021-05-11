@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Header: View {
+    @Binding var showSearch: Bool
+    
     var body: some View {
         HStack {
             HStack {
@@ -24,7 +26,9 @@ struct Header: View {
             HStack(spacing: 15) {
                 SysImageButton(callback: nil, buttonImageName: "laptopcomputer.and.iphone")
                 SysImageButton(callback: nil, buttonImageName: "bell")
-                SysImageButton(callback: nil, buttonImageName: "magnifyingglass")
+                SysImageButton(callback: {
+                    showSearch = true
+                }, buttonImageName: "magnifyingglass")
                 SysImageButton(callback: nil, buttonImageName: "person.crop.circle")
             }
         }
@@ -35,9 +39,9 @@ struct Header: View {
 struct Header_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color.init(UIColor(named: "background")!).edgesIgnoringSafeArea(.all)
+            Color("primary").edgesIgnoringSafeArea(.all)
             
-            Header()
+            Header(showSearch: .constant(false))
         }
         .preferredColorScheme(.dark)
     }

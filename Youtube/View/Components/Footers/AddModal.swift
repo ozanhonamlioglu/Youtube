@@ -113,7 +113,7 @@ struct AddModal: View {
                 Spacer()
             }
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-            .background(RoundedCorners(color: Color("addModal"), tl: 15, tr: 15, bl: 0, br: 0))
+            .background(RoundedCorners(color: Color("primary"), tl: 15, tr: 15, bl: 0, br: 0))
             .position(CGPoint( x: UIScreen.main.bounds.width / 2, y: modalPosition ))
             .foregroundColor(.white)
             .gesture(drag)

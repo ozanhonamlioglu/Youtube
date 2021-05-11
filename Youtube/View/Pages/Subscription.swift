@@ -42,6 +42,11 @@ struct Subscription: View {
 
 struct Subscription_Previews: PreviewProvider {
     static var previews: some View {
-        Subscription()
+        ZStack {
+            Color("primary").edgesIgnoringSafeArea(.all)
+            
+            Subscription()
+        }
+        .preferredColorScheme(.dark)
     }
 }

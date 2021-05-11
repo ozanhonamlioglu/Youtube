@@ -43,7 +43,7 @@ struct Home: View {
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color.init(UIColor(named: "background")!).edgesIgnoringSafeArea(.all)
+            Color("primary").edgesIgnoringSafeArea(.all)
             
             Home()
         }

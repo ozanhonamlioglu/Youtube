@@ -22,6 +22,15 @@ struct SurroundWithCircle: ViewModifier {
     }
 }
 
+struct StateableButton<Content>: ButtonStyle where Content: View {
+    var change: (Bool) -> Content
+    
+    func makeBody(configuration: Configuration) -> some View {
+        return change(configuration.isPressed)
+    }
+    
+}
+
 extension View {
     func surroundWithCircle(circleSize: CGFloat) -> some View {
         modifier(SurroundWithCircle(circleSize: circleSize))

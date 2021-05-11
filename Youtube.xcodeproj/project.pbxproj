@@ -31,6 +31,7 @@
 		BDB43AA5264207DA0038BAE5 /* LargeVideoPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB43AA4264207DA0038BAE5 /* LargeVideoPreview.swift */; };
 		BDB43AB726420DFA0038BAE5 /* VMImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB43AB626420DFA0038BAE5 /* VMImageLoader.swift */; };
 		BDB43ABF26420F3E0038BAE5 /* ShowImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB43ABE26420F3E0038BAE5 /* ShowImage.swift */; };
+		BDDC642E264ACFD900B2185F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDC642D264ACFD900B2185F /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		BDB43AA4264207DA0038BAE5 /* LargeVideoPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeVideoPreview.swift; sourceTree = "<group>"; };
 		BDB43AB626420DFA0038BAE5 /* VMImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMImageLoader.swift; sourceTree = "<group>"; };
 		BDB43ABE26420F3E0038BAE5 /* ShowImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImage.swift; sourceTree = "<group>"; };
+		BDDC642D264ACFD900B2185F /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				BD3CD30A2649B70F008EA91F /* Trending.swift */,
 				BD3CD3132649D6AC008EA91F /* Subscription.swift */,
 				BD3CD3162649D797008EA91F /* Library.swift */,
+				BDDC642D264ACFD900B2185F /* SearchView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				BDB43A5E2641D2AD0038BAE5 /* YoutubeApp.swift in Sources */,
 				BDB43AA5264207DA0038BAE5 /* LargeVideoPreview.swift in Sources */,
 				BDB43A7C2641D4CA0038BAE5 /* Tabbar.swift in Sources */,
+				BDDC642E264ACFD900B2185F /* SearchView.swift in Sources */,
 				BD3F24B42646CD3700D1EBA9 /* RoundedCorners.swift in Sources */,
 				BD79472226484D3100F77949 /* AnimationModifiers.swift in Sources */,
 				BD3F24BB2647294500D1EBA9 /* AddModal.swift in Sources */,
