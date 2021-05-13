@@ -17,6 +17,7 @@ struct SearchView: View {
         }
     }
     @Binding var showSearch: Bool
+    @Binding var showSearchPage: Bool
     
     var body: some View {
         ZStack {
@@ -29,14 +30,16 @@ struct SearchView: View {
                     }, buttonImageName: "chevron.backward", activeButtonImageName: nil, active: nil, buttonLabel: nil)
                     
                     // CustomTextfield(placeholder: "Search", text: $searchText, editingEnd: $editingEnd)
-                    CustomTextField(placeholder: "Search", text: $searchText) { status in
-                        print(status)
-                    }
-                    .frame(height: 30)
+                    CustomTextField(placeholder: "Search", text: $searchText, onEditingChanged: {status in}, onCommit: {
+                        showSearch = false
+                        showSearchPage = true
+                    })
+                    .frame(maxWidth: UIScreen.main.bounds.width - 70, maxHeight: 30, alignment: .center)
+                    .clipped()
                     
                     SysImageButton(callback: nil, buttonImageName: "mic", activeButtonImageName: nil, active: nil, buttonLabel: nil)
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 10)
                 .padding(.bottom, 5)
                 
                 Divider()
@@ -46,7 +49,8 @@ struct SearchView: View {
                         ForEach(searchPast, id: \.self) { item in
                             
                             Button(action: {
-                                print("Just chill")
+                                showSearch = false
+                                showSearchPage = true
                             }, label: {
                                 EmptyView()
                             })
@@ -78,7 +82,7 @@ struct SearchView_Previews: PreviewProvider {
         ZStack {
             Color("primary").edgesIgnoringSafeArea(.all)
             
-            SearchView(showSearch: .constant(true))
+            SearchView(showSearch: .constant(true), showSearchPage: .constant(false))
         }
         .preferredColorScheme(.dark)
     }

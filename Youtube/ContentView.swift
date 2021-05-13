@@ -11,9 +11,10 @@ struct ContentView: View {
     @State var activeTab: TabButtons = .home
     @State var openAddModal = false
     @State var showSearch = false
+    @State var showSearchPage = false
     
     init() {
-        // UINavigationBar.appearance().backgroundColor = .red
+        // UINavigationBar.appearance().backgroundColor = .gray // This is for navbar.
     }
     
     var body: some View {
@@ -21,20 +22,38 @@ struct ContentView: View {
             Color("primary").edgesIgnoringSafeArea(.all)
             
             VStack {
-                Header(showSearch: $showSearch)
-                Spacer()
-                
-                switch activeTab {
-                case .home:
-                    Home()
-                case .trending:
-                    Trending()
-                case .subs:
-                    Subscription()
-                case .lib:
-                    Library()
-                default:
-                    EmptyView()
+                NavigationView {
+                    ZStack {
+                        
+                        NavigationLink(
+                            destination: SearchPage(showSearchPage: $showSearchPage),
+                            isActive: $showSearchPage,
+                            label: {
+                                EmptyView()
+                            })
+                        
+                        VStack {
+                            Header(showSearch: $showSearch)
+                            Spacer()
+                            
+                            switch activeTab {
+                            case .home:
+                                Home()
+                            case .trending:
+                                Trending()
+                            case .subs:
+                                Subscription()
+                            case .lib:
+                                Library()
+                            default:
+                                EmptyView()
+                            }
+                            
+                        }
+                        
+                    }
+                    .background(Color("primary").edgesIgnoringSafeArea(.all))
+                    .navigationBarHidden(true)
                 }
                 
                 Spacer()
@@ -46,7 +65,7 @@ struct ContentView: View {
             }
             
             if showSearch {
-                SearchView(showSearch: $showSearch)
+                SearchView(showSearch: $showSearch, showSearchPage: $showSearchPage)
             }
         }
     }
