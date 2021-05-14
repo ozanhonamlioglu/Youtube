@@ -24,7 +24,6 @@ struct ContentView: View {
             VStack {
                 NavigationView {
                     ZStack {
-                        
                         NavigationLink(
                             destination: SearchPage(showSearchPage: $showSearchPage),
                             isActive: $showSearchPage,
@@ -59,6 +58,7 @@ struct ContentView: View {
                 Spacer()
                 Tabbar(activeTab: $activeTab, openAddModal: $openAddModal)
             }
+            .ignoresSafeArea(.keyboard)
             
             if openAddModal {
                 AddModal(open: $openAddModal)

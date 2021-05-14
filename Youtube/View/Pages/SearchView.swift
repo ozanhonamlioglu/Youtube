@@ -49,8 +49,11 @@ struct SearchView: View {
                         ForEach(searchPast, id: \.self) { item in
                             
                             Button(action: {
-                                showSearch = false
-                                showSearchPage = true
+                                UIApplication.shared.endEditing()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                    self.showSearch = false
+                                    self.showSearchPage = true
+                                }
                             }, label: {
                                 EmptyView()
                             })
@@ -126,7 +129,9 @@ final class MyTextFieldCoordinator: NSObject {
     }
 
     @objc private func textFieldEditingDidEndOnExit(_ textField: UITextField) {
-        control.onCommit()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.control.onCommit()
+        }
     }
     
     @objc func closeAccessory() {
@@ -166,6 +171,12 @@ struct CustomTextField: UIViewRepresentable {
 
     func updateUIView(_ uiView: UITextField, context: Context) {
     }
+}
+
+extension UIApplication {
+   func endEditing() {
+       sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+   }
 }
 
 //struct CustomTextfield: UIViewRepresentable {
