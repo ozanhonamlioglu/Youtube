@@ -10,14 +10,11 @@ import SwiftUI
 let searchPast = ["Test 1", "Test 2", "Test 3", "Test 4"]
 
 struct SearchView: View {
-    @State var searchText: String = ""
-    @State var editingEnd: Bool = true {
-        didSet {
-            print(oldValue)
-        }
-    }
     @Binding var showSearch: Bool
     @Binding var showSearchPage: Bool
+    
+    @State var editingEnd: Bool = true
+    @State var q = ""
     
     var body: some View {
         ZStack {
@@ -30,9 +27,13 @@ struct SearchView: View {
                     }, buttonImageName: "chevron.backward", activeButtonImageName: nil, active: nil, buttonLabel: nil)
                     
                     // CustomTextfield(placeholder: "Search", text: $searchText, editingEnd: $editingEnd)
-                    CustomTextField(placeholder: "Search", text: $searchText, onEditingChanged: {status in}, onCommit: {
-                        showSearch = false
-                        showSearchPage = true
+                    CustomTextField(placeholder: "Search", text: $q, onEditingChanged: {status in}, onCommit: {
+                        // when user hits the DONE button.
+                        if (!q.isEmpty) {
+                            showSearch = false
+                            showSearchPage = true
+                            searchManager.setQ(q: q)
+                        }
                     })
                     .frame(maxWidth: UIScreen.main.bounds.width - 70, maxHeight: 30, alignment: .center)
                     .clipped()
@@ -41,6 +42,9 @@ struct SearchView: View {
                 }
                 .padding(.horizontal, 10)
                 .padding(.bottom, 5)
+                .onReceive(searchManager.q) { q in
+                    self.q = q
+                }
                 
                 Divider()
 
@@ -49,8 +53,11 @@ struct SearchView: View {
                         ForEach(searchPast, id: \.self) { item in
                             
                             Button(action: {
+                                q = item
+                                searchManager.setQ(q: item)
                                 UIApplication.shared.endEditing()
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                    // if user selects any item from the search history.
                                     self.showSearch = false
                                     self.showSearchPage = true
                                 }

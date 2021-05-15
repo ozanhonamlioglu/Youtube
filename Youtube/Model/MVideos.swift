@@ -24,10 +24,10 @@ struct MVideosPageInfo: Decodable, Hashable {
 struct MVideosItems: Decodable, Hashable {
     var kind: String
     var etag: String
-    var id: String
+    // var id: String
     var snippet: MVideosItemsSnippet
     //var contentDetails: MVideosItemsContentDetail
-    var statistics: MVideosItemsStatistics
+    var statistics: MVideosItemsStatistics?
 }
 
 struct MVideosItemsStatistics: Decodable, Hashable {

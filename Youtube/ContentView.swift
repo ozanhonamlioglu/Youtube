@@ -12,6 +12,11 @@ struct ContentView: View {
     @State var openAddModal = false
     @State var showSearch = false
     @State var showSearchPage = false
+    @State var scrollViewPosition: CGPoint = .zero {
+        didSet {
+            // print(scrollViewPosition)
+        }
+    }
     
     init() {
         // UINavigationBar.appearance().backgroundColor = .gray // This is for navbar.
@@ -25,7 +30,7 @@ struct ContentView: View {
                 NavigationView {
                     ZStack {
                         NavigationLink(
-                            destination: SearchPage(showSearchPage: $showSearchPage),
+                            destination: SearchPage(showSearchPage: $showSearchPage, showSearch: $showSearch),
                             isActive: $showSearchPage,
                             label: {
                                 EmptyView()
@@ -35,18 +40,23 @@ struct ContentView: View {
                             Header(showSearch: $showSearch)
                             Spacer()
                             
-                            switch activeTab {
-                            case .home:
-                                Home()
-                            case .trending:
-                                Trending()
-                            case .subs:
-                                Subscription()
-                            case .lib:
-                                Library()
-                            default:
-                                EmptyView()
+                            ZStack {
+                                switch activeTab {
+                                case .home:
+                                    Home()
+                                case .trending:
+                                    Trending()
+                                case .subs:
+                                    Subscription()
+                                case .lib:
+                                    Library()
+                                default:
+                                    EmptyView()
+                                }
                             }
+                            .onPreferenceChange(ScrollOffsetPreferenceKey.self, perform: { value in
+                                scrollViewPosition = value
+                            })
                             
                         }
                         
